@@ -30,7 +30,7 @@ if st.session_state["student_details_submitted"]:
         st.session_state["openai_model"] = "gpt-4"
 
     if "supervisor_messages" not in st.session_state:
-        st.session_state["supervisor_messages"] = []
+        st.session_state["supervisor_messages"] = [{"role": "assistant", "content": "Hi, I'm a clinical supervisor with over 20 years of experience in general clinical practice. I can provide some insight into what tests that the patients may require to investigate some of the issues they are having."}]
 
     for message in st.session_state["supervisor_messages"]:
         with st.chat_message(message["role"]):
