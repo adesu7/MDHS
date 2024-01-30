@@ -83,10 +83,18 @@ if st.session_state["student_details_submitted"]:
                                 - Triplex Spray 12
                                 If the students request for the following tests, you can provide them access to results, just provide the links for the corresponding tests
                                 
-                                >> OPG Assessment - {st.secrets["OPG_Assessment"]}
+                                >> OPG or OPT Assessment - {st.secrets["OPG_Assessment"]}
                                 >> Periapical Radiographs - {st.secrets["Periapical_Radiographs"]}
                                 >> Bitewing radiographs Tests Right Hand side - {st.secrets["Bitewing_radiographs_Tests_Right_Hand_side"]}
                                 >> Bitewing radiographs Tests Left Hand side - {st.secrets["Bitewing_radiographs_Tests_Left_Hand_side"]}
+                                >> Cold Test Right or Tooth 12 - {st.secrets["Cold_Test_Right_Tooth_12"]}
+                                >> Cold Test Left 1 - {st.secrets["Cold_Test_Left_1"]}
+                                >> Cold Test Left 2 - {st.secrets["Cold_Test_Left_2"]}
+                                >> OPG Radiology Report - {st.secrets["OPG_Radiology_Report"]}
+                                >> Soft Tissue Examination - {st.secrets["Soft_Tissue_Buccal_Mucosa"]}
+                                >> Hard Tissue Examination - {st.secrets["Hard_Tissue_Anterior"]} {st.secrets["Hard_Tissue_Bucal_Left"]}, {st.secrets["Hard_Tissue_Bucal_Right"]}, {st.secrets["Hard_Tissue_Lower_Occlusal"]}, {st.secrets["Hard_Tissue_Upper_Occlusal"]}
+                                >> Percussion or TTP Test Left Hand side - {st.secrets["Percussion_LHS"]}
+                                >> Medical History - {st.secrets["Medical_History"]}
     """}]+[
 
                         {"role": m["role"], "content": m["content"]}
@@ -99,8 +107,14 @@ if st.session_state["student_details_submitted"]:
                     message_placeholder.markdown(full_response + "▌ ")
 
             if 'https' in full_response:
-                image_url = re.search(r'https://[^\s]*', full_response).group(0)
-                st.image(image_url, width=700)
+                url = re.search(r'https://[^\s]*', full_response).group(0)
+                # Check if the url is a video if mp4 is in the url
+                if 'mp4' in url:
+                    st.video(url)
+                elif 'pdf' in url:
+                    st.markdown(f"[Click here to view the PDF]({url})")
+                else:
+                    st.image(url, width=700)
             else:
                 message_placeholder.markdown(full_response + "▌ ")
 
