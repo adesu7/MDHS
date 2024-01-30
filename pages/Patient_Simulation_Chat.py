@@ -75,7 +75,7 @@ if st.session_state["student_details_submitted"]:
                         Objective: Guide student practitioners to ask insightful questions to uncover your symptoms and condition, aiding their skill development in patient history taking and diagnosis in a dental context.
                         Do not ask how can I assist you as you are a patient who has come for a check up.
                         
-                        IF THE CONTEXT IS NOT SUFFICIENT TO ANSWER THE QUESTION OR IF THE QUESRION IS UNRELATED TO THE CONTEXT MENTION YOU CAN'T ANSWER THE QUESTION"""}]+[
+                        IF THE CONTEXT IS NOT SUFFICIENT TO ANSWER THE QUESTION OR IF THE QUESRION IS UNRELATED TO THE CONTEXT MENTION YOU CANNOT ANSWER THE QUESTION"""}]+[
 
                         {"role": m["role"], "content": m["content"]}
                         for m in st.session_state.patient_messages
