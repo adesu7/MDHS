@@ -81,7 +81,7 @@ if st.session_state["student_details_submitted"]:
                                 - Heat Test
                                 - Bite Test
                                 - Triplex Spray 12
-                                If the students request for the following tests, you can provide them access to results, just provide the links for the corresponding tests
+                                If the students request for the following tests, you can provide them access to results, just provide the links for the corresponding tests, they need to specifically ask for the results.
                                 
                                 >> OPG or OPT Assessment - {st.secrets["OPG_Assessment"]}
                                 >> Periapical Radiographs - {st.secrets["Periapical_Radiographs"]}
@@ -90,11 +90,12 @@ if st.session_state["student_details_submitted"]:
                                 >> Cold Test Right or Tooth 12 - {st.secrets["Cold_Test_Right_Tooth_12"]}
                                 >> Cold Test Left 1 - {st.secrets["Cold_Test_Left_1"]}
                                 >> Cold Test Left 2 - {st.secrets["Cold_Test_Left_2"]}
-                                >> OPG Radiology Report - {st.secrets["OPG_Radiology_Report"]}
+                                >> OPG Radiology Report - {st.secrets["OPG_Radiology"]}
                                 >> Soft Tissue Examination - {st.secrets["Soft_Tissue_Buccal_Mucosa"]}
                                 >> Hard Tissue Examination - {st.secrets["Hard_Tissue_Anterior"]} {st.secrets["Hard_Tissue_Bucal_Left"]}, {st.secrets["Hard_Tissue_Bucal_Right"]}, {st.secrets["Hard_Tissue_Lower_Occlusal"]}, {st.secrets["Hard_Tissue_Upper_Occlusal"]}
                                 >> Percussion or TTP Test Left Hand side - {st.secrets["Percussion_LHS"]}
                                 >> Medical History - {st.secrets["Medical_History"]}
+
     """}]+[
 
                         {"role": m["role"], "content": m["content"]}
@@ -110,9 +111,10 @@ if st.session_state["student_details_submitted"]:
                 url = re.search(r'https://[^\s]*', full_response).group(0)
                 # Check if the url is a video if mp4 is in the url
                 if 'mp4' in url:
-                    st.video(url)
+                    #st.video(url, format="video/mp4")
+                    pass
                 elif 'pdf' in url:
-                    st.markdown(f"[Click here to view the PDF]({url})")
+                    pass
                 else:
                     st.image(url, width=700)
             else:
@@ -148,7 +150,7 @@ if st.session_state["student_details_submitted"]:
         with init_connection() as st.session_state.superviser_client:
             db = st.session_state.superviser_client["chat_history"]
             collection = db["supervisor"]
-            collection.insert_one({"_id": st.session_state["student_id"],"history": st.session_state["supervisor_messages"], "student_id": st.session_state["student_id"], "subject": st.session_state["subject"], "time_submitted": datetime.datetime.now()})
+            collection.insert_one({"history": st.session_state["supervisor_messages"], "student_id": st.session_state["student_id"], "subject": st.session_state["subject"], "time_submitted": datetime.datetime.now()})
             
         
         # Close the MongoDB connection
