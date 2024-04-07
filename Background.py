@@ -45,39 +45,29 @@ st.session_state["student_details_submitted"] = False
 # elif st.session_state["student_details_submitted"]:
 #     st.write("Thank you for submitting your details. Please navigate to the patient's chat page to begin the simulation.")
 
-placeholder_form = st.empty()
+# placeholder_form = st.empty()
 
-if not st.session_state["student_details_submitted"]:
-    with placeholder_form.form("Student Details"):
-        # allow only numbers in student id
-        st.session_state["student_id"] = st.number_input("Student ID: ", value=None, step=1, format="%i")
-        st.session_state["subject"] = st.text_input("Subject Code: ")
-        submit_button = st.form_submit_button("Submit")
-        if submit_button:
-            if st.session_state["student_id"] is None:
-                st.error("A valid Student ID must be filled.")    
-            elif st.session_state["subject"] == "":
-                st.error("A valid Subject Code must be filled.")
-            elif st.session_state["student_id"] is None and st.session_state["subject"] == "":
-                st.error("Both Student ID and Subject Code must be filled.")
+# if not st.session_state["student_details_submitted"]:
+#     with placeholder_form.form("Student Details"):
+#         # allow only numbers in student id
+#         st.session_state["student_id"] = st.number_input("Student ID: ", value=None, step=1, format="%i")
+#         st.session_state["subject"] = st.text_input("Subject Code: ")
+#         submit_button = st.form_submit_button("Submit")
+#         if submit_button:
+#             if st.session_state["student_id"] is None:
+#                 st.error("A valid Student ID must be filled.")    
+#             elif st.session_state["subject"] == "":
+#                 st.error("A valid Subject Code must be filled.")
+#             elif st.session_state["student_id"] is None and st.session_state["subject"] == "":
+#                 st.error("Both Student ID and Subject Code must be filled.")
 
-            else:
-                st.session_state["student_details_submitted"] = True
-                st.write("Thank you for submitting your details. Please navigate to the patient's chat page to begin the simulation.")
-                placeholder_form.empty()
+#             else:
+#                 st.session_state["student_details_submitted"] = True
+#                 st.write("Thank you for submitting your details. Please navigate to the patient's chat page to begin the simulation.")
+#                 placeholder_form.empty()
         
-        # st.write("Thank you for submitting your details. Please navigate to the patient's chat page to begin the simulation.")
-if st.session_state["student_details_submitted"]:
-    st.write("Your student ID is ", st.session_state["student_id"])
-    st.write("Thank you for submitting your details. Please navigate to the patient's chat page to begin the simulation.")
+#         # st.write("Thank you for submitting your details. Please navigate to the patient's chat page to begin the simulation.")
+# if st.session_state["student_details_submitted"]:
+#     st.write("Your student ID is ", st.session_state["student_id"])
+#     st.write("Thank you for submitting your details. Please navigate to the patient's chat page to begin the simulation.")
 
-# placeholder = st.empty()
-
-# with placeholder.form("login"):
-#     st.markdown("#### Painel de Login")
-#     email = st.text_input("Email", placeholder="Digite aqui seu email")
-#     senha = st.text_input("Senha", placeholder="Digite aqui sua senha", type="password")
-#     login_button = st.form_submit_button("Login")
-
-#     if login_button:
-#         placeholder.empty()

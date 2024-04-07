@@ -24,7 +24,7 @@ with st.expander("ℹ️ Disclaimer"):
         "This is an experimental teaching tool. It has not been refined in detail and is prone to 'hallucinations' (providing false information). It's designed for fun and your personal interest but should not be treated as a reliable source of information. We're interested in experimenting with first-generation AI-based teaching tools in SSCS. Please note, this demo is designed to process a maximum of 20 interactions. Thank you for your understanding."
     )
 
-if st.session_state["student_details_submitted"]:
+# if not st.session_state["student_details_submitted"]:
 
     if "openai_model" not in st.session_state:
         st.session_state["openai_model"] = "gpt-4"
@@ -34,13 +34,13 @@ if st.session_state["student_details_submitted"]:
 
     for message in st.session_state["supervisor_messages"]:
         with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+            st.markdown(message["content"], unsafe_allow_html=True)
 
     if prompt := st.chat_input("Ask the supervisor questions"):
         st.session_state["supervisor_messages"].append({"role": "user", "content": prompt})
 
         with st.chat_message("user"):
-            st.markdown(prompt)
+            st.markdown(prompt, unsafe_allow_html=True)
         
 
         with st.chat_message("assistant"):
@@ -95,6 +95,15 @@ if st.session_state["student_details_submitted"]:
                                 >> Hard Tissue Examination - {st.secrets["Hard_Tissue_Anterior"]} {st.secrets["Hard_Tissue_Bucal_Left"]}, {st.secrets["Hard_Tissue_Bucal_Right"]}, {st.secrets["Hard_Tissue_Lower_Occlusal"]}, {st.secrets["Hard_Tissue_Upper_Occlusal"]}
                                 >> Percussion or TTP Test Left Hand side - {st.secrets["Percussion_LHS"]}
                                 >> Medical History - {st.secrets["Medical_History"]}
+                                >> Superbowl https://www.youtube.com/watch?v=8OokHde8URc
+
+                    Return the link to results so it can be clicked on and also in a new line embedd the link in markdown format to display the image or video in the chat.
+                    here is an example of how to embed the link in markdown format wihin the width of 700px:
+                    <img src="https://www.example.com/image.jpg" width="700">
+
+                    if the link does not contain png or jpg, then embed the link in iframe format to render the video or pdf in the chat:
+                    ![Alt text] [Width: 700px](https://www.example.com/image.jpg)
+                   
 
     """}]+[
 
@@ -105,22 +114,23 @@ if st.session_state["student_details_submitted"]:
                 ):
                 if response.choices[0].delta.content is not None:
                     full_response += response.choices[0].delta.content
-                    message_placeholder.markdown(full_response + "▌ ")
+                    message_placeholder.markdown(full_response + "▌ ", unsafe_allow_html=True)
 
-            if 'https' in full_response:
-                url = re.search(r'https://[^\s]*', full_response).group(0)
-                # Check if the url is a video if mp4 is in the url
-                if 'mp4' in url:
-                    #st.video(url, format="video/mp4")
-                    pass
-                elif 'pdf' in url:
-                    pass
-                else:
-                    st.image(url, width=700)
-            else:
-                message_placeholder.markdown(full_response + "▌ ")
+            # if 'https' in full_response:
+            #     url = re.search(r'https://[^\s]*', full_response).group(0)
+            #     # Check if the url is a video if mp4 is in the url
+            #     if 'mp4' in url:
+            #         #st.video(url, format="video/mp4")
+            #         pass
+            #     elif 'pdf' in url:
+            #         pass
+            #     else:
+            #         # Continue to display the image in the chat
+            #         st.image(url, width=700)
+            # else:
+            #     message_placeholder.markdown(full_response + "▌ ")
 
-            message_placeholder.markdown(full_response)
+            message_placeholder.markdown(full_response, unsafe_allow_html=True)
             
         st.session_state["supervisor_messages"].append(
             {"role": "assistant", "content": full_response}
@@ -161,5 +171,5 @@ if st.session_state["student_details_submitted"]:
         st.session_state["supervisor_messages"] = []
 
 
-else:
-    st.write("Please submit your details to begin the simulation.")
+# else:
+#     st.write("Please submit your details to begin the simulation.")
