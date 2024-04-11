@@ -82,9 +82,9 @@ if prompt := st.chat_input("Ask the supervisor questions"):
                             - Bite Test
                             - Triplex Spray 12
                             If the students request for the following tests, you can provide them access to results, just provide the links for the corresponding tests, they need to specifically ask for the results.
-                            
+                            If a student asks for Bitewing Radiographs, you can provide the results for the right and left hand side, similarly if they ask for Hard Tissue Examination, you can provide the results for the anterior, buccal left, buccal right, lower occlusal and upper occlusal.
+                            only but Cold_Test_Right_Tooth_12 should show up though if they say RHS or tooth 12.
                             >> OPG or OPT Assessment - {st.secrets["OPG_Assessment"]}
-                            >> Periapical Radiographs - {st.secrets["Periapical_Radiographs"]}
                             >> Bitewing radiographs Tests Right Hand side - {st.secrets["Bitewing_radiographs_Tests_Right_Hand_side"]}
                             >> Bitewing radiographs Tests Left Hand side - {st.secrets["Bitewing_radiographs_Tests_Left_Hand_side"]}
                             >> Cold Test Right or Tooth 12 - {st.secrets["Cold_Test_Right_Tooth_12"]}
@@ -95,9 +95,9 @@ if prompt := st.chat_input("Ask the supervisor questions"):
                             >> Hard Tissue Examination - {st.secrets["Hard_Tissue_Anterior"]} {st.secrets["Hard_Tissue_Bucal_Left"]}, {st.secrets["Hard_Tissue_Bucal_Right"]}, {st.secrets["Hard_Tissue_Lower_Occlusal"]}, {st.secrets["Hard_Tissue_Upper_Occlusal"]}
                             >> Percussion or TTP Test Left Hand side - {st.secrets["Percussion_LHS"]}
                             >> Medical History - {st.secrets["Medical_History"]}
-                            >> PA Tooth 16 & 17 - {st.secrets["PA_Tooth16_17"]}
-                            >> PA Tooth 26 & 27 - {st.secrets["PA_Tooth26_27"]}
-                            >> PA Tooth 36 & 37 - {st.secrets["PA_Tooth36_37"]}
+                            >> Periapical Radiographs or PA Tooth 16 & 17 - {st.secrets["PA_Tooth16_17"]}
+                            >> Periapical Radiographs or PA Tooth 26 & 27 - {st.secrets["PA_Tooth26_27"]}
+                            >> Periapical Radiographs or PA Tooth 36 & 37 - {st.secrets["PA_Tooth36_37"]}
 
                 Return the link to results so it can be clicked on and also in a new line embedd the link in markdown format to display the image or video in the chat.
                 here is an example of how to embed the link in markdown format wihin the width of 700px:
