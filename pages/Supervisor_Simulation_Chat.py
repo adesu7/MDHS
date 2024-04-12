@@ -81,9 +81,10 @@ if prompt := st.chat_input("Ask the supervisor questions"):
                             - Heat Test
                             - Bite Test
                             - Triplex Spray 12
+                 
                             If the students request for the following tests, you can provide them access to results, just provide the links for the corresponding tests, they need to specifically ask for the results.
                             If a student asks for Bitewing Radiographs, you can provide the results for the right and left hand side, similarly if they ask for Hard Tissue Examination, you can provide the results for the anterior, buccal left, buccal right, lower occlusal and upper occlusal.
-                            only but Cold_Test_Right_Tooth_12 should show up though if they say RHS or tooth 12.
+                            But if asked for cold test provide left 1 and 2 but Cold_Test_Right_Tooth_12 should show up if they ask for right side or tooth 12.
                             >> OPG or OPT Assessment - {st.secrets["OPG_Assessment"]}
                             >> Bitewing radiographs Tests Right Hand side - {st.secrets["Bitewing_radiographs_Tests_Right_Hand_side"]}
                             >> Bitewing radiographs Tests Left Hand side - {st.secrets["Bitewing_radiographs_Tests_Left_Hand_side"]}
