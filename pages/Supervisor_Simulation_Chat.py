@@ -98,6 +98,7 @@ if prompt := st.chat_input("Ask the supervisor questions"):
                             >> Periapical Radiographs or PA Tooth 16 & 17 - {st.secrets["PA_Tooth16_17"]}
                             >> Periapical Radiographs or PA Tooth 26 & 27 - {st.secrets["PA_Tooth26_27"]}
                             >> Periapical Radiographs or PA Tooth 36 & 37 - {st.secrets["PA_Tooth36_37"]}
+                            >> Periapical Radiographs or PA Tooth 12 - {st.secrets["PA_Tooth12"]}
 
                 Return the link to results so it can be clicked on and also in a new line embedd the link in markdown format to display the image or video in the chat.
                 here is an example of how to embed the link in markdown format wihin the width of 700px:
