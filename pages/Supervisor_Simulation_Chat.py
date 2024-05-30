@@ -163,7 +163,7 @@ if st.button("Save chat history"):
     with init_connection() as st.session_state.superviser_client:
         db = st.session_state.superviser_client["chat_history"]
         collection = db["supervisor"]
-        collection.insert_one({"history": st.session_state["supervisor_messages"], "student_id": st.session_state["student_id"], "subject": st.session_state["subject"], "time_submitted": datetime.datetime.now()})
+        collection.insert_one({"history": st.session_state["supervisor_messages"], "time_submitted": datetime.datetime.now()})
         
     
     # Close the MongoDB connection

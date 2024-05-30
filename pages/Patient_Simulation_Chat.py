@@ -121,7 +121,7 @@ if st.button("Save chat history"):
     with init_connection() as db_client:
         db = db_client["chat_history"]
         collection = db["patient"]
-        collection.insert_one({"student_id": st.session_state["student_id"], "history": st.session_state["patient_messages"], "subject": st.session_state["subject"], "time_submitted": datetime.datetime.now()})
+        collection.insert_one({"history": st.session_state["patient_messages"], "time_submitted": datetime.datetime.now()})
         # init_connection.clear()
 
     # Close the MongoDB connection
