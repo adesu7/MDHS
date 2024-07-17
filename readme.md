@@ -24,8 +24,8 @@ This repository contains two main Python scripts:
 ## Setup and Installation
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/dental-simulation-chatbot.git
-   cd dental-simulation-chatbot
+   git clone https://github.com/adesu7/MDHS.git
+   cd MDHS
    ```
 
 2. Install required packages:
@@ -37,6 +37,7 @@ This repository contains two main Python scripts:
    Create a `.streamlit/secrets.toml` file in the project directory and add the following:
    ```toml
    OPENAI_API_KEY = "your_openai_api_key"
+   (Optional below)
    MONGO_DB_USERNAME = "your_mongodb_username"
    MONGO_DB_PASSWORD = "your_mongodb_password"
    MONGO_DB_CLUSTER = "your_mongodb_cluster"
@@ -74,7 +75,7 @@ This repository contains two main Python scripts:
 - Ongoing work is needed to optimize prompts for more realistic patient-like responses.
 
 ## Contributing
-We welcome contributions to improve this educational tool. Please feel free to submit issues or pull requests.
+We welcome contributions to improve this educational tool. Please feel free to submit pull requests.
 
 ## Disclaimer
 This is an experimental teaching tool and should not be treated as a reliable source of medical or dental information. It is designed for educational purposes only.
